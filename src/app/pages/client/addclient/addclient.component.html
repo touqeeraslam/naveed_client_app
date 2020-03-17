@@ -3,11 +3,12 @@
     <nb-card>
       <nb-card-header>Add New Client</nb-card-header>
       <nb-card-body>
-        <div class="form-control-group">
+        <form  #myForm="ngForm" (ngSubmit)="allclient(); myForm.reset()">
+        <div class="form-control-group" >
           <label class="label">First Name</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="firstname"
+                 [(ngModel)]="client.firstname"
                  name="Firstname"
                  #Firstname="ngModel"
                  placeholder="First Name"
@@ -26,7 +27,7 @@
             <label class="label">Last Name</label>
             <input nbInput
                    fullWidth
-                   [(ngModel)]="lastname"
+                   [(ngModel)]="client.lastname"
                    name="Lastname"
                    #Lastname="ngModel"
                    placeholder="last Name"
@@ -44,7 +45,7 @@
             <label class="label">Company</label>
             <input nbInput
                    fullWidth
-                   [(ngModel)]="company"
+                   [(ngModel)]="client.clientcompany"
                    name="company1"
                    #company1="ngModel"
                    placeholder="company"
@@ -64,7 +65,7 @@
           <label class="label">WEBSITE</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="website"
+                 [(ngModel)]="client.website"
                  name="web"
                  #web="ngModel"
                  placeholder="WEBSITE"
@@ -84,7 +85,7 @@
           <label class="label">EMAIL</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="email"
+                 [(ngModel)]="client.email"
                  name="Email"
                  #Email="ngModel"
                  placeholder="EMAIL"
@@ -104,7 +105,7 @@
           <label class="label">User Name</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="username"
+                 [(ngModel)]="client.username"
                  name="Username"
                  #Username="ngModel"
                  placeholder="Username"
@@ -123,7 +124,7 @@
           <label class="label">Password</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="password"
+                 [(ngModel)]="client.password"
                  name="Password"
                  #Password="ngModel"
                  placeholder="Enter Password">
@@ -133,7 +134,7 @@
           <label class="label">Confirm Password</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="confirmpassword"
+                 [(ngModel)]="client.confirmpassword"
                  name="ConfirmPassword"
                  #ConfirmPassword="ngModel"
                  placeholder="Enter Passwod">
@@ -142,7 +143,7 @@
           <label class="label">Phone</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="phone"
+                 [(ngModel)]="client.phone"
                  name="Phone"
                  #Phone="ngModel"
                  placeholder="Enter Phone Number"
@@ -160,7 +161,7 @@
           <label class="label">Address</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="address"
+                 [(ngModel)]="client.address"
                  name="Address"
                  #Address="ngModel"
                  placeholder="Enter Address"
@@ -178,7 +179,7 @@
           <label class="label">MORE ADDRESS</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="moreaddress"
+                 [(ngModel)]="client.moreaddress"
                  name="MoreAddress"
                  #MoreAddress="ngModel"
                  placeholder="Enter Address 2"
@@ -198,7 +199,7 @@
           <label class="label">STATE</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="state"
+                 [(ngModel)]="client.state"
                  name="State"
                  #State="ngModel"
                  placeholder="State Name"
@@ -219,7 +220,7 @@
           <label class="label">City</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="city"
+                 [(ngModel)]="client.city"
                  name="City"
                  #City="ngModel"
                  placeholder="City Name"
@@ -239,7 +240,7 @@
           <label class="label">Passcode</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="passcode"
+                 [(ngModel)]="client.passcode"
                  name="Passcode"
                  #Passcode="ngModel"
                  placeholder="Enter Passcode"
@@ -257,7 +258,7 @@
         <div class="form-control-group">
           <label class="label">Country</label>
           <br>
-          <nb-select placeholder="Country" [(ngModel)]="selectedcountryNgModel" >
+          <nb-select placeholder="Country" name="s1" [(ngModel)]="client.selectedcountryNgModel" >
             <nb-option value="">Germany</nb-option>
             <nb-option value="0">United State</nb-option>
             <nb-option value="1">Norway</nb-option>
@@ -269,7 +270,7 @@
         <div class="form-control-group">
           <label class="label">RESELLER PANEL</label>
           <br>
-          <nb-select placeholder="Select Reseller Panel" [(ngModel)]="selectedpanelNgModel" >
+          <nb-select name="s2" placeholder="Select Reseller Panel" [(ngModel)]="client.selectedpanelNgModel" >
             <nb-option value="1">Option 1</nb-option>
           <nb-option value="2">Option 2</nb-option>
           <nb-option value="3">Option 3</nb-option>
@@ -280,7 +281,7 @@
         <div class="form-control-group">
           <label class="label">API ACCESS</label>
           <br>
-          <nb-select placeholder="Select Api" [(ngModel)]="selectedapiNgModel" >
+          <nb-select name="s3" placeholder="Select Api" [(ngModel)]="client.selectedapiNgModel" >
             <nb-option value="1">Option 1</nb-option>
             <nb-option value="2">Option 2</nb-option>
             <nb-option value="3">Option 3</nb-option>
@@ -292,7 +293,7 @@
         <div class="form-control-group">
           <label class="label">CLIENT GROUP</label>
           <br>
-          <nb-select placeholder="Select Client Group"[(ngModel)]="selectedclientNgModel">
+          <nb-select name="s4" placeholder="Select Client Group"[(ngModel)]="client.selectedclientNgModel">
             <nb-option value="1">Option 1</nb-option>
             <nb-option value="2">Option 2</nb-option>
             <nb-option value="3">Option 3</nb-option>
@@ -302,7 +303,7 @@
         <div class="form-control-group">
           <label class="label">SMS GATEWAY</label>
           <br>
-          <nb-select placeholder="Select sms Gateway" [(ngModel)]="selectedgatewayNgModel" >
+          <nb-select name="s5" placeholder="Select sms Gateway" [(ngModel)]="client.selectedgatewayNgModel" >
             <nb-option value="1">Option 1</nb-option>
           <nb-option value="2">Option 2</nb-option>
           <nb-option value="3">Option 3</nb-option>
@@ -314,7 +315,7 @@
           <label class="label">Sms Limit</label>
           <input nbInput
                  fullWidth
-                 [(ngModel)]="smslimit"
+                 [(ngModel)]="client.smslimit"
                  name="SmsLimit"
                  #SmsLimit="ngModel"
                  placeholder="Enter Sms Limit"
@@ -329,15 +330,17 @@
           </ng-container>
         </div>
         <br>
-        <button type="button"
+        <button type="submit"
                 nbButton
                 size="small"
                 status="success" [disabled]="submitted || Firstname.value == null || Firstname.value == ''
                 || Lastname.value == null || Lastname.value == ''"
                 [class.btn-pulse]="submitted"
-                (click)="allclient()">
+                >
           + Add
         </button>
+        <!-- <button nbButton (click)="showToast('top-right', 'success')">Top Right</button> -->
+      </form>
       </nb-card-body>
     </nb-card>
   </div>
@@ -359,7 +362,7 @@
       <label class="label">First Name</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="firstname"
+             [(ngModel)]="client.firstname"
              name="Firstname"
              #Firstname="ngModel"
              placeholder="First Name"
@@ -378,7 +381,7 @@
       <label class="label">Last Name</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="lastname"
+             [(ngModel)]="client.lastname"
              name="Lastname"
              #Lastname="ngModel"
              placeholder="last Name"
@@ -397,7 +400,7 @@
       <label class="label">Company</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="company"
+             [(ngModel)]="client.company"
              name="company1"
              #company1="ngModel"
              placeholder="company"
@@ -418,7 +421,7 @@
       <label class="label">WEBSITE</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="website"
+             [(ngModel)]="client.website"
              name="web"
              #web="ngModel"
              placeholder="WEBSITE"
@@ -438,7 +441,7 @@
       <label class="label">EMAIL</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="email"
+             [(ngModel)]="client.email"
              name="Email"
              #Email="ngModel"
              placeholder="EMAIL"
@@ -458,7 +461,7 @@
       <label class="label">User Name</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="username"
+             [(ngModel)]="client.username"
              name="Username"
              #Username="ngModel"
              placeholder="Username"
@@ -477,7 +480,7 @@
       <label class="label">Passwod</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="passwod"
+             [(ngModel)]="client.passwod"
              name="Passwod"
              #Passwod="ngModel"
              placeholder="Enter Passwod"
@@ -496,7 +499,7 @@
       <label class="label">Confirm Passwod</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="confirmpasswod"
+             [(ngModel)]="client.confirmpasswod"
              name="ConfirmPasswod"
              #ConfirmPasswod="ngModel"
              placeholder="Enter Passwod"
@@ -514,7 +517,7 @@
       <label class="label">Phone</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="phone"
+             [(ngModel)]="client.phone"
              name="Phone"
              #Phone="ngModel"
              placeholder="Enter Phone Number"
@@ -532,7 +535,7 @@
       <label class="label">Address</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="address"
+             [(ngModel)]="client.address"
              name="Address"
              #Address="ngModel"
              placeholder="Enter Address"
@@ -550,7 +553,7 @@
       <label class="label">MORE ADDRESS</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="moreaddress"
+             [(ngModel)]="client.moreaddress"
              name="MoreAddress"
              #MoreAddress="ngModel"
              placeholder="Enter Address 2"
@@ -570,7 +573,7 @@
       <label class="label">STATE</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="state"
+             [(ngModel)]="client.state"
              name="State"
              #State="ngModel"
              placeholder="State Name"
@@ -591,7 +594,7 @@
       <label class="label">City</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="city"
+             [(ngModel)]="client.city"
              name="City"
              #City="ngModel"
              placeholder="City Name"
@@ -611,7 +614,7 @@
       <label class="label">Passcode</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="passcode"
+             [(ngModel)]="client.passcode"
              name="Passcode"
              #Passcode="ngModel"
              placeholder="Enter Passcode"
@@ -681,7 +684,7 @@
       <label class="label">Sms Limit</label>
       <input nbInput
              fullWidth
-             [(ngModel)]="smslimit"
+             [(ngModel)]="client.smslimit"
              name="SmsLimit"
              #SmsLimit="ngModel"
              placeholder="Enter Sms Limit"
