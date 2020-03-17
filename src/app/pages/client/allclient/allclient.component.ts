@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { User } from '../../../view-models/user';
 import { ClientViewmodel } from '../../Viewmodel/client-viewmodel';
 import { ClientService } from '../../service/client.service';
+import { NbDialogService } from '@nebular/theme';
+import { AddclientComponent } from '../addclient/addclient.component';
 
 @Component({
   selector: 'allclient',
@@ -49,12 +51,12 @@ export class AllclientComponent implements OnInit {
     },
   };
   private source;
-  constructor(private service: ClientService) { 
+  constructor(private service: ClientService,private dialogService: NbDialogService) { 
     const data = this.service.getData().subscribe(res=>{
       this.source = res as ClientViewmodel
     });
   }
-
+  names: string[] = ['hello'];
   private firstname:string;
   private lastname:string;
   message:string;
@@ -67,6 +69,10 @@ this.firstname = null;
 this.lastname = null;
 this.message="form submit";
 }
+  open(dialog: TemplateRef<any>) {
+    this.dialogService.open(dialog, { context:{firstname:'fname',lastname:'lname', } });
+  }
+
 onDeleteConfirm(event): void {
   if (window.confirm('Are you sure you want to delete?')) {
     event.confirm.resolve();

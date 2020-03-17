@@ -80,4 +80,18 @@
     <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)">
     </ng2-smart-table>
   </nb-card-body>
+ 
 </nb-card>
+
+<button nbButton (click)="open(dialog)">Open Dialog</button>
+<!-- model for add -->
+<ng-template #dialog let-data let-ref="dialogRef">
+  <nb-card  style="display: flex; overflow: scroll; height: 80%;">
+    
+    <nb-card-header>Template Dialog</nb-card-header>
+    <nb-card-body><addclient [inputData]="data"></addclient></nb-card-body>
+    <nb-card-footer>
+      <button nbButton (click)="ref.close()">Close Dialog</button>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientModel } from "./client.model";
@@ -11,7 +11,7 @@ import { NbToastrService } from '@nebular/theme';
 export class AddclientComponent implements OnInit {
   @HostBinding('class')
   classes = 'example-items-rows';
-
+  @Input() inputData:any;
   data:any;
   message:string;
   client: ClientModel;
@@ -34,6 +34,12 @@ export class AddclientComponent implements OnInit {
     }
     
   ngOnInit() {
+    if(this.inputData){
+      alert(this.inputData);
+      this.client=this.inputData
+    }else{
+      this.client=new ClientModel()
+    }
  
   }
   allclient()
@@ -42,7 +48,6 @@ export class AddclientComponent implements OnInit {
   this.http.post('http://localhost:3000/Client/create', this.client)
       .subscribe(response => {
         this.showToast('top-right', 'success','added successfully');
-      //  this.initModel()
         console.log(response);
       }, (err) => {
         this.showToast('top-right', 'danger', err.message);
