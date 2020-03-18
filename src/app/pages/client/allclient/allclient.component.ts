@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { User } from '../../../view-models/user';
 import { ClientViewmodel } from '../../Viewmodel/client-viewmodel';
 import { ClientService } from '../../service/client.service';
+import { NbDialogService } from '@nebular/theme';
+import { AddclientComponent } from '../addclient/addclient.component';
 
 @Component({
   selector: 'allclient',
@@ -14,11 +16,13 @@ export class AllclientComponent implements OnInit {
       addButtonContent: '<i class="nb-plus"></i>',
       createButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+     
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
       saveButtonContent: '<i class="nb-checkmark"></i>',
       cancelButtonContent: '<i class="nb-close"></i>',
+      confirmSave:true
     },
     delete: {
       deleteButtonContent: '<i class="nb-trash"></i>',
@@ -49,7 +53,7 @@ export class AllclientComponent implements OnInit {
     },
   };
   private source;
-  constructor(private service: ClientService) { 
+  constructor(private service: ClientService,private dialogService: NbDialogService) { 
     const data = this.service.getData().subscribe(res=>{
       this.source = res as ClientViewmodel
     });
@@ -73,5 +77,9 @@ onDeleteConfirm(event): void {
   } else {
     event.confirm.reject();
   }
+}
+onedit(event,dialog){
+  console.log(event)
+  this.dialogService.open(dialog, { context:{firstname:'fname',lastname:'lname', } });
 }
 }
