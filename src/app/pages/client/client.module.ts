@@ -7,11 +7,14 @@ import { AddclientComponent } from './addclient/addclient.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { config } from 'process';
 import { EditclientComponent } from './editclient/editclient.component';
+import { ProfileComponent } from './profile/profile.component';
+import { UpdatelimitComponent } from './updatelimit/updatelimit.component';
+import { SendsmsComponent } from './sendsms/sendsms.component';
 
 
 
 @NgModule({
-  declarations: [AllclientComponent,AddclientComponent, EditclientComponent],
+  declarations: [AllclientComponent,AddclientComponent, EditclientComponent, ProfileComponent, UpdatelimitComponent, SendsmsComponent],
   imports: [
     CommonModule,
     FormsModule,

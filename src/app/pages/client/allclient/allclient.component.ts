@@ -4,6 +4,7 @@ import { ClientViewmodel } from '../../Viewmodel/client-viewmodel';
 import { ClientService } from '../../service/client.service';
 import { NbDialogService } from '@nebular/theme';
 import { AddclientComponent } from '../addclient/addclient.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'allclient',
@@ -20,8 +21,6 @@ export class AllclientComponent implements OnInit {
     },
     edit: {
       editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
       confirmSave:true
     },
     delete: {
@@ -53,7 +52,7 @@ export class AllclientComponent implements OnInit {
     },
   };
   private source;
-  constructor(private service: ClientService,private dialogService: NbDialogService) { 
+  constructor(private service: ClientService,private dialogService: NbDialogService,public router:Router) { 
     const data = this.service.getData().subscribe(res=>{
       this.source = res as ClientViewmodel
     });
@@ -78,8 +77,9 @@ onDeleteConfirm(event): void {
     event.confirm.reject();
   }
 }
-onedit(event,dialog){
-  console.log(event)
-  this.dialogService.open(dialog, { context:{firstname:'fname',lastname:'lname', } });
+onEdit(){
+  // console.log(event)
+  // this.dialogService.open(dialog, { context:{firstname:'fname',lastname:'lname', } });
+  this.router.navigate(["pages/client/editclient"]);
 }
 }

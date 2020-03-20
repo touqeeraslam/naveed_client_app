@@ -6,6 +6,7 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ClientModule } from './client/client.module';
 
+
 @NgModule({
   imports: [
     PagesRoutingModule,
@@ -15,6 +16,7 @@ import { ClientModule } from './client/client.module';
   ],
   declarations: [
     PagesComponent,
+  
   ],
 })
 export class PagesModule {

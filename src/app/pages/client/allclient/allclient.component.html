@@ -76,12 +76,12 @@
   All Clients
   </nb-card-header>
   <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onedit($event,dialog)">
+    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"  (editConfirm)="onEdit()">
     </ng2-smart-table>
   </nb-card-body>
-  <ng-template #dialog let-data let-ref="dialogRef">
+  <!-- <ng-template #dialog let-data let-ref="dialogRef">
       <nb-card-body><editclient [inputData]="data"></editclient></nb-card-body>
-  </ng-template>
+  </ng-template> -->
 </nb-card>
 <!-- <ng-template #dialog let-data let-ref="dialogRef">
   <nb-card>

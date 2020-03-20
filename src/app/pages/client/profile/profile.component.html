@@ -1,0 +1,17 @@
+<nb-card accent="info">
+  <nb-card-header>UPLOAD IMAGE</nb-card-header>
+  <nb-card-body>
+<form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)">
+  <div class="image-upload">
+      <label for="file-input">
+      </label>
+      <input id="file-input" #Image type="file"/>
+  </div>
+</form>
+  </nb-card-body>
+  <nb-card-footer>
+    <!-- <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !imageForm.valid"></button> -->
+    <button type="button" class="btn btn-info">Close</button>
+    <button type="button" class="btn btn-success" style="margin-left: 2px;">Upload</button>
+  </nb-card-footer>
+</nb-card>
