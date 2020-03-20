@@ -22,7 +22,6 @@ import {
 } from '@nebular/theme';
 import { NbAuthModule, NbPasswordAuthStrategy, NbAuthJWTToken, NbAuthJWTInterceptor, NB_AUTH_TOKEN_INTERCEPTOR_FILTER, NbPasswordAuthStrategyOptions, getDeepFromObject } from '@nebular/auth';
 import { AddUserAgentInterceptor } from './interceptor/add-user-agent-interceptor';
-import { AddclientComponent } from './pages/client/addclient/addclient.component';
 
 //export function testFun(module: string, res: HttpResponse<Object>, options: NbPasswordAuthStrategyOptions){
 

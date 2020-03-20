@@ -1,90 +1,17 @@
-<!-- 
-<div class="container">
-
-  <p *ngIf="message" class="text-success">{{message}}</p>
-  <br>
-
-  <form  #form="ngForm" aria-labelledby="title">
-
-    <div class="form-control-group">
-      <label class="label">First Name</label>
-      <input nbInput
-             fullWidth
-             [(ngModel)]="firstname"
-             name="Firstname"
-             #Firstname="ngModel"
-             placeholder="First Name"
-             [status]="Firstname.dirty ? (Firstname.invalid  ? 'danger' : 'success') : ''"
-             required="required"
-             [minlength] ="4"
-             [attr.aria-invalid]="Firstname.invalid && Firstname.touched ? true : null">
-      <ng-container *ngIf="Firstname.invalid && Firstname.touched">
-        <p class="caption status-danger" *ngIf="Firstname.errors?.required">
-          Field is required!
-        </p>
-      </ng-container>
-    </div>
-  
-    <div class="form-control-group">
-      <label class="label">Last Name</label>
-      <input nbInput
-             fullWidth
-             [(ngModel)]="lastname"
-             name="Lastname"
-             #Lastname="ngModel"
-             placeholder="last Name"
-             [status]="Lastname.dirty ? (Lastname.invalid  ? 'danger' : 'success') : ''"
-             required="required"
-             [minlength]="4"
-             [attr.aria-invalid]="Lastname.invalid && Lastname.touched ? true : null">
-      <ng-container *ngIf="Lastname.invalid && Lastname.touched">
-        <p class="caption status-danger" *ngIf="Lastname.errors?.required">
-          Field is required!
-        </p>
-      </ng-container>
-    </div>
-  
-    <div class="form-control-group">
-      <label class="label">Select Choice</label>
-      <br>
-      <nb-select placeholder="Select Showcase" [(selected)]="selectedItem" >
-        <nb-option value="">Option empty</nb-option>
-        <nb-option value="0">Option 0</nb-option>
-        <nb-option value="1">Option 1</nb-option>
-        <nb-option value="2">Option 2</nb-option>
-        <nb-option value="3">Option 3</nb-option>
-        <nb-option value="4">Option 4</nb-option>
-      </nb-select>
-    </div>
-  
-    <br>
-    <button type="button"
-            nbButton
-            fullWidth
-            status="success"
-            [disabled]="submitted || !form.valid || Firstname.value == null || Firstname.value == ''
-            || Lastname.value == null || Lastname.value == ''"
-            [class.btn-pulse]="submitted"
-            (click)="allclient()">
-      Log In
-    </button>
-  </form>
-</div>
- -->
- <nb-card style="display: flex; overflow: scroll; height: 80%;  max-width: 800px;">
-  <nb-card-header>
-  All Clients
-  </nb-card-header>
-  <nb-card-body>
-    <ng2-smart-table [settings]="settings" [source]="source" (deleteConfirm)="onDeleteConfirm($event)"  (editConfirm)="onEdit()">
-    </ng2-smart-table>
-  </nb-card-body>
-  <!-- <ng-template #dialog let-data let-ref="dialogRef">
-      <nb-card-body><editclient [inputData]="data"></editclient></nb-card-body>
-  </ng-template> -->
-</nb-card>
-<!-- <ng-template #dialog let-data let-ref="dialogRef">
-  <nb-card>
-    <nb-card-body><editclient [inputData]="data"></editclient></nb-card-body>
-  </nb-card>
-</ng-template> -->
+<ngx-datatable class="material striped"
+               [loadingIndicator]="loadingIndicator"
+               [rows]="rows"
+               [offset]="page"
+               [rowHeight]="50"
+               [limit]="10"
+               [scrollbarH]="true"
+               [headerHeight]="50"
+               [footerHeight]="35"
+               [columns]="columns"
+               [count]="totalPage"
+               (page)='changePage($event)'
+               (sort)='onSort($event)'
+               [externalPaging]="true"
+               [externalSorting]="true"
+               [columnMode]="'force'">
+</ngx-datatable>

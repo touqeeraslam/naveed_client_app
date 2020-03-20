@@ -10,7 +10,9 @@ import { EditclientComponent } from './editclient/editclient.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdatelimitComponent } from './updatelimit/updatelimit.component';
 import { SendsmsComponent } from './sendsms/sendsms.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { SendsmsComponent } from './sendsms/sendsms.component';
     NbAlertModule,
     NbUserModule,
     NbTabsetModule,
-    NbDialogModule.forChild()
+    MatTableModule,
+    MatPaginatorModule,
+    NgxDatatableModule,
   ]
 })
 export class ClientModule { }

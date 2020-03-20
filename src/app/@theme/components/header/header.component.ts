@@ -5,7 +5,7 @@ import { UserData } from '../../../@core/data/users';
 import { map, takeUntil, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { UserService } from '../../../Services/user.service';
+// import { UserService } from '../../../Services/user.service';
 import { NbTokenService } from '@nebular/auth';
 
 @Component({
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private breakpointService: NbMediaBreakpointsService,
-              private userProfileService: UserService,
+              // private userProfileService: UserService,
               private tokenService: NbTokenService,
               private router: Router) {
   }
@@ -72,9 +72,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((users: any) => this.user = users.nick);
 
-    this.userProfileService.getCurrentUser()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((response) => this.userNick = response.data.fullName);
+    // this.userProfileService.getCurrentUser()
+    //   .pipe(takeUntil(this.destroy$))
+    //   .subscribe((response) => this.userNick = response.data.fullName);
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
