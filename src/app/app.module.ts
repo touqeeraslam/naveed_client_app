@@ -61,7 +61,7 @@ import { AddUserAgentInterceptor } from './interceptor/add-user-agent-intercepto
             },
           },
           register: {
-            endpoint: '/api/account/users',
+            endpoint: 'https://ultimatesms1.herokuapp.com/user/signup',
             method: 'post',
             redirect: {
               success: 'auth/enter-code',

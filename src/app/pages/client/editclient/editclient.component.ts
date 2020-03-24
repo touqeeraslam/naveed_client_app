@@ -49,6 +49,7 @@ export class EditclientComponent implements OnInit {
     debugger
       // if () {
         if(this.client){
+          console.log('this.client');
           // this.client=this.inputData
         }else{
           this.client=new ClientModel()
