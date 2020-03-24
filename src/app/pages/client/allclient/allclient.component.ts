@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./allclient.component.scss']
 })
 export class AllclientComponent implements OnInit {
-
   loadingIndicator: boolean = false;
   totalPage: number;
   columns: any[] = [];
@@ -18,16 +17,19 @@ export class AllclientComponent implements OnInit {
   search: string;
   order: string;
   direction: string;
+  roleTemplate: any;
+  
 
   ngOnInit() {
     this.columns = [
-      {name: 'Actions', prop: 'id'},
       { prop: 'username', name: 'Name' },
-      { prop: 'company', name: 'User Name' },
+       { prop: 'company', name: 'User Name' },
       { prop: 'username', name: 'Created' },
       { prop: 'username', name: 'Created By' },
       { prop: 'city', name: 'Api Access' },
       { prop: 'state', name: 'Status' },
+      // { prop: 'id',name: 'Actions' },
+      // { prop: 'id',name: 'Actions', cellTemplate: this.roleTemplate },
     ];
     this.loadData();
   }
@@ -53,5 +55,10 @@ export class AllclientComponent implements OnInit {
       console.log(res);
     });
   }
-
+  onEdit(row) {
+    this.router.navigate(["pages/client/editclient/"]);
+  }
+  onDelete(value) {
+    console.log(value);
+  }
 }

@@ -14,4 +14,17 @@
   [rows]="dataList"
   [columns]="columns"
 >
+<ngx-datatable-column *ngFor="let col of columns; let i = index;" name="{{col.name}}" prop="{{col.prop}}">
+</ngx-datatable-column>
+<ngx-datatable-column>
+  <ng-template #roleTemplate let-row="rows" let-value="value" ngx-datatable-cell-template>
+    <span>
+      <button nbButton status="info" (click)='onEdit(row)' style="margin-left: 3px;"><i class="nb-edit"></i></button>
+      <button   nbButton status="info" (click)='onDelete(value)' style="margin-left: 3px;"><i class="nb-edit"></i></button>
+    </span>
+    <!-- <button nbButton status="info">Edit</button> -->
+    <!-- <button nbButton status="Danger">Delete</button> -->
+  </ng-template>
+</ngx-datatable-column>
+
 </ngx-datatable>

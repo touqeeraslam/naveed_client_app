@@ -12,7 +12,7 @@ import { ClientModule } from './client/client.module';
     PagesRoutingModule,
     ThemeModule,
     NbMenuModule,
-    ClientModule
+    ClientModule,
   ],
   declarations: [
     PagesComponent,
