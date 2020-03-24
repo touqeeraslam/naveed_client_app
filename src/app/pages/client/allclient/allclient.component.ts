@@ -14,7 +14,7 @@ export class AllclientComponent implements OnInit {
   totalPage: number;
   columns: any[] = [];
   dataList: [] = [];
-  page: number;
+  page: number=10;
   search: string;
   order: string;
   direction: string;
@@ -45,8 +45,8 @@ export class AllclientComponent implements OnInit {
     this.direction = sort.sorts[0].dir;
     // this.loadData();
   }
- 
-  constructor(private service: ClientService,public router:Router) { 
+
+  constructor(private service: ClientService,public router:Router) {
     const data = this.service.getData().subscribe(res=>{
       this.dataList = res;
       console.log(this.dataList);
