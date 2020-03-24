@@ -51,7 +51,7 @@ import { AddUserAgentInterceptor } from './interceptor/add-user-agent-intercepto
       strategies: [
         NbPasswordAuthStrategy.setup({
           name: 'email',
-          baseEndpoint: 'http://localhost:3000',
+          baseEndpoint: 'https://ultimatesms1.herokuapp.com',
           login: {
             endpoint: '/user/login',
             method: 'post',
