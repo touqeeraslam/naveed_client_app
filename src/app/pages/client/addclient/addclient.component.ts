@@ -44,7 +44,7 @@ export class AddclientComponent implements OnInit {
   allclient()
 {
   // console.log("client======>", this.client)
-  this.http.post('http://localhost:3000/Client/create', this.client)
+  this.http.post('https://ultimatesms1.herokuapp.com/Client/create', this.client)
       .subscribe(response => {
         this.showToast('top-right', 'success','added successfully');
         console.log(response);
