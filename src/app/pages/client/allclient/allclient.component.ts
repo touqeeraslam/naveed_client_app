@@ -18,7 +18,7 @@ export class AllclientComponent implements OnInit {
   order: string;
   direction: string;
   roleTemplate: any;
-  
+
 
   ngOnInit() {
     this.columns = [
@@ -56,9 +56,14 @@ export class AllclientComponent implements OnInit {
     });
   }
   onEdit(row) {
-    this.router.navigate(["pages/client/editclient/"]);
+    console.log("row",row);
+    this.router.navigate(["pages/editclient"], {
+      queryParams: row, skipLocationChange: true
+    });
+    // this.router.navigate(['pages/client/editclient/' + row.id])
+    // this.router.navigate(["pages/client/editclient/"]);
   }
   onDelete(value) {
-    console.log(value);
+    console.log("hello",value);
   }
 }

@@ -20,7 +20,7 @@ export class EditclientComponent implements OnInit {
   @Input() inputData:any;
   data:any;
   message:string;
-  client: ClientModel;
+  client: ClientModel | any;
   index: number;
   userPictureOnly: boolean = false;
   user: any;
@@ -31,7 +31,7 @@ export class EditclientComponent implements OnInit {
   constructor(public http: HttpClient,
     private router: Router,
     private toastrService: NbToastrService,private dialogService: NbDialogService,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute) {
       this.client=new ClientModel()
     }
 
@@ -44,12 +44,19 @@ export class EditclientComponent implements OnInit {
     }
 
   ngOnInit() {
-    if(this.inputData){
-      this.client=this.inputData
-    }else{
-      this.client=new ClientModel()
-    }
- 
+    debugger
+    this.client = this.route.snapshot.queryParams;
+    debugger
+      // if () {
+        if(this.client){
+          // this.client=this.inputData
+        }else{
+          this.client=new ClientModel()
+        }
+      // }
+    // })
+
+
   }
 
   onupdate(){

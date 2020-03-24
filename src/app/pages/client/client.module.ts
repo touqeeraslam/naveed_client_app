@@ -32,6 +32,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MatTableModule,
     MatPaginatorModule,
     NgxDatatableModule,
+    NbDialogModule.forRoot()
   ]
 })
 export class ClientModule { }
