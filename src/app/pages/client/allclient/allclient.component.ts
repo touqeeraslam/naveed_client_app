@@ -13,7 +13,7 @@ export class AllclientComponent implements OnInit {
   loadingIndicator: boolean = false;
   totalPage: number;
   columns: any[] = [];
-  rows: [] = [];
+  dataList: [] = [];
   page: number;
   search: string;
   order: string;
@@ -21,6 +21,7 @@ export class AllclientComponent implements OnInit {
 
   ngOnInit() {
     this.columns = [
+      {name: 'Actions', prop: 'id'},
       { prop: 'username', name: 'Name' },
       { prop: 'company', name: 'User Name' },
       { prop: 'username', name: 'Created' },
@@ -32,15 +33,8 @@ export class AllclientComponent implements OnInit {
   }
 
   loadData() {
-    // this.page = page - 1;
-    // this.loadingIndicator = true;
-    // this.operationLogService.getOperationLogs(page, 10, this.search)
-    //   .subscribe(response => {
-    //     this.loadingIndicator = false;
-    //     this.rows = response.data.result as [];
-    //     this.totalPage = response.data.count;
-    //   });
-  }
+    this.dataList;
+   }
 
   changePage(pageInfo) {
     // this.loadData(pageInfo.offset + 1);
@@ -54,8 +48,8 @@ export class AllclientComponent implements OnInit {
  
   constructor(private service: ClientService,public router:Router) { 
     const data = this.service.getData().subscribe(res=>{
-      this.rows = res;
-      console.log(this.rows);
+      this.dataList = res;
+      console.log(this.dataList);
       console.log(res);
     });
   }

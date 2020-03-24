@@ -25,4 +25,5 @@ export class ClientService {
   getData(): Observable<any> {
     return this.http.get('http://localhost:3000/Client/get-all');
   }
+  
 }
