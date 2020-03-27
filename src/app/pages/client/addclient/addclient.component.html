@@ -80,8 +80,8 @@
             </p>
           </ng-container>
         </div>
-    
-    
+
+
         <div class="form-control-group">
           <label class="label">EMAIL</label>
           <input nbInput
@@ -100,8 +100,8 @@
             </p>
           </ng-container>
         </div>
-    
-    
+
+
         <div class="form-control-group">
           <label class="label">User Name</label>
           <input nbInput
@@ -120,7 +120,7 @@
             </p>
           </ng-container>
         </div>
-    
+
         <div class="form-control-group">
           <label class="label">Password</label>
           <input nbInput
@@ -130,7 +130,7 @@
                  #Password="ngModel"
                  placeholder="Enter Password">
         </div>
-    
+
         <div class="form-control-group">
           <label class="label">Confirm Password</label>
           <input nbInput
@@ -194,8 +194,8 @@
             </p>
           </ng-container>
         </div>
-    
-    
+
+
         <div class="form-control-group">
           <label class="label">STATE</label>
           <input nbInput
@@ -214,9 +214,9 @@
             </p>
           </ng-container>
         </div>
-    
-    
-        
+
+
+
         <div class="form-control-group">
           <label class="label">City</label>
           <input nbInput
@@ -235,8 +235,8 @@
             </p>
           </ng-container>
         </div>
-    
-        
+
+
         <div class="form-control-group">
           <label class="label">Passcode</label>
           <input nbInput
@@ -277,7 +277,7 @@
           <nb-option value="4">Option 4</nb-option>
           </nb-select>
         </div>
-     
+
         <div class="form-control-group">
           <label class="label">API ACCESS</label>
           <br>
@@ -329,6 +329,16 @@
             </p>
           </ng-container>
         </div>
+        <form>
+          <div>
+            <input type="file" name="image" (change)="uploadImage($event)" />
+          </div>
+          <br>
+        </form>
+
+          <!-- <input type="file" name="myFile" (change)="uploadImage($event)"/> -->
+
+
         <br>
         <button type="submit"
                 nbButton
