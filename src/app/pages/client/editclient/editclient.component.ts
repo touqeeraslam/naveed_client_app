@@ -24,6 +24,7 @@ export class EditclientComponent implements OnInit {
   index: number;
   userPictureOnly: boolean = false;
   user: any;
+  url:string="http:localhost:3000"
   userNick: any;
   base64image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAG1BMVEVEeef///+4zPaKq/ChvPPn7' +
     'vxymu3Q3flbieqI1HvuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQUlEQVQ4jWNgGAWjgP6ASdncAEaiAhaGiACmFhCJLsMaIiDAEQEi0WXYEiMC' +
@@ -44,9 +45,11 @@ export class EditclientComponent implements OnInit {
     }
 
   ngOnInit() {
-    debugger
-    this.client = this.route.snapshot.queryParams;
-    debugger
+    this.http.get("http://localhost:3000/Client/getByUserId/"+this.route.snapshot.params.id).subscribe((res:any)=>{
+    res[0].image= this.url+res[0].image;
+    this.client=res[0];
+      console.log("get by id",res)
+    })
       // if () {
         if(this.client){
           // this.client=this.inputData

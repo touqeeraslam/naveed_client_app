@@ -1,5 +1,6 @@
 export class ClientModel {
     firstname="";
+    image:string;
     lastname="";
     company="";
     website="";
@@ -19,7 +20,7 @@ export class ClientModel {
     selectedcountryNgModel="";
     selectedclientNgModel="";
     selectedgatewayNgModel="";
-  
+
   constructor(){
       this.firstname="";
     this.lastname="";
@@ -41,6 +42,7 @@ export class ClientModel {
     this.selectedcountryNgModel="";
     this.selectedclientNgModel="";
     this.selectedgatewayNgModel="";
+
   }
-  
+
   }

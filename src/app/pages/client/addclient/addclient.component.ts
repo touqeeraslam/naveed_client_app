@@ -1,9 +1,10 @@
 import { Component, OnInit, HostBinding, Input } from '@angular/core';
-import { HttpClient  } from '@angular/common/http';
+import { HttpClient, HttpBackend  } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientModel } from "./client.model";
 import { NbToastrService } from '@nebular/theme';
 import { map } from 'rxjs/operators';
+import { environment  } from '../../../../environments/environment';
 @Component({
   selector: 'addclient',
   templateUrl: './addclient.component.html',
@@ -44,7 +45,8 @@ export class AddclientComponent implements OnInit {
   }
   allclient()
 {
-  this.http.post('https://ultimatesms1.herokuapp.com/Client/create', this.client)
+  // this.http.post('https://ultimatesms1.herokuapp.com/Client/create', this.client)
+  this.http.post( environment.backendUrl + '/Client/create', this.client)
       .subscribe(response => {
         this.showToast('top-right', 'success','added successfully');
         console.log(response);
@@ -62,9 +64,10 @@ export class AddclientComponent implements OnInit {
         let formData: FormData = new FormData();
         formData.append("file", mediaFiles.target.files[0]);
 
-        let uploadFilePath = "http://localhost:3000/file";
-        this.http.post(uploadFilePath, formData).subscribe(res=>{
-          console.log("success",res)
+        let uploadFilePath = environment.backendUrl + '/file';
+        this.http.post(uploadFilePath, formData).subscribe((res:any)=>{
+          console.log("success",res);
+          this.client.image = res.filePath;
           return res;
         },err=>{
           console.log("err",err)

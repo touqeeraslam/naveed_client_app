@@ -23,7 +23,8 @@ export class ClientService {
   smslimit: any;
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {
-    return this.http.get('https://ultimatesms1.herokuapp.com/Client/get-all');
+    // return this.http.get('https://ultimatesms1.herokuapp.com/Client/get-all');
+    return this.http.get('http://localhost:3000/Client/get-all');
   }
-  
+
 }

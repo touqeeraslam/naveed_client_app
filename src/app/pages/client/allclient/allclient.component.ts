@@ -57,9 +57,10 @@ export class AllclientComponent implements OnInit {
   }
   onEdit(row) {
     console.log("row",row);
-    this.router.navigate(["pages/editclient"], {
-      queryParams: row, skipLocationChange: true
-    });
+    this.router.navigate(['pages/client/editclient/' + row._id])
+    // this.router.navigate(["pages/editclient"], {
+    //   queryParams: row, skipLocationChange: true
+    // });
     // this.router.navigate(['pages/client/editclient/' + row.id])
     // this.router.navigate(["pages/client/editclient/"]);
   }
