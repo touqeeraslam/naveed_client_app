@@ -13,7 +13,8 @@ import { SendsmsComponent } from './sendsms/sendsms.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [AllclientComponent,AddclientComponent, EditclientComponent, ProfileComponent, UpdatelimitComponent, SendsmsComponent],
@@ -32,6 +33,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     MatTableModule,
     MatPaginatorModule,
     NgxDatatableModule,
+    MatButtonModule,
+    MatButtonToggleModule,
     NbDialogModule.forRoot()
   ]
 })

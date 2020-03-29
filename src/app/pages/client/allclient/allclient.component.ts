@@ -27,7 +27,7 @@ export class AllclientComponent implements OnInit {
       { prop: 'username', name: 'Created' },
       { prop: 'username', name: 'Created By' },
       { prop: 'city', name: 'Api Access' },
-      { prop: 'state', name: 'Status' },
+      { prop: 'state', name: 'Status',width: -130},
       // { prop: 'id',name: 'Actions' },
       // { prop: 'id',name: 'Actions', cellTemplate: this.roleTemplate },
     ];
@@ -57,9 +57,10 @@ export class AllclientComponent implements OnInit {
   }
   onEdit(row) {
     console.log("row",row);
-    this.router.navigate(["pages/editclient"], {
-      queryParams: row, skipLocationChange: true
-    });
+    this.router.navigate(['pages/client/editclient/' + row._id]);
+    // this.router.navigate(["pages/editclient"], {
+    //   queryParams: row, skipLocationChange: true
+    // });
     // this.router.navigate(['pages/client/editclient/' + row.id])
     // this.router.navigate(["pages/client/editclient/"]);
   }

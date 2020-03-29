@@ -6,4 +6,15 @@ nb-card-body {
   }
   nb-card-footer{
      text-align: end;
-     }
+     }.form-inline [fullWidth] {
+      flex: 1;
+    }
+    
+    .form-inline > * {
+      margin: 0 1.5rem 1.5rem 0;
+    }
+    
+    nb-card.inline-form-card nb-card-body {
+      padding-bottom: 0;
+    }
+    

@@ -1,17 +1,60 @@
-<nb-card accent="info">
+<!-- <nb-card accent="info">
   <nb-card-header>UPLOAD IMAGE</nb-card-header>
-  <nb-card-body>
-<form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)">
+  <nb-card-body> -->
+<!-- <form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)">
   <div class="image-upload">
       <label for="file-input">
       </label>
       <input id="file-input" #Image type="file"/>
   </div>
-</form>
+</form> -->
+<!-- <div class="form-control-group">
+  <label class="label">Profile Image</label>
+  <input nbInput type="file" 
+         fullWidth
+         [(ngModel)]="client.image"
+         name="image">
+</div>
   </nb-card-body>
-  <nb-card-footer>
+  <nb-card-footer> -->
     <!-- <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !imageForm.valid"></button> -->
-    <button type="button" class="btn btn-info">Close</button>
+    <!-- <button type="button" class="btn btn-info">Close</button>
     <button type="button" class="btn btn-success" style="margin-left: 2px;">Upload</button>
   </nb-card-footer>
-</nb-card>
+</nb-card> -->
+<!-- <div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>Inline form</nb-card-header>
+      <nb-card-body>
+        <form class="form-inline">
+          <input type="text" nbInput fullWidth placeholder="Jane Doe">
+          <input type="text" nbInput fullWidth placeholder="Email">
+          <nb-checkbox>Remember me</nb-checkbox>
+          <button type="submit" nbButton status="primary">Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div> -->
+
+<div class="row">
+    <nb-card>
+      <nb-card-header>UPLOAD IMAGE</nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="inputfile" class="label">Profile Image</label>
+              <input type="file" nbInput fullWidth id="inputfile">
+            </div>
+          </div>
+        </div>
+     
+        <button type="submit" nbButton>Submit</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+

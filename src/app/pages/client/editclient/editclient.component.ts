@@ -24,10 +24,18 @@ export class EditclientComponent implements OnInit {
   index: number;
   userPictureOnly: boolean = false;
   user: any;
+  loadingIndicator: boolean = false;
+  totalPage: number;
+  columns: any[] = [];
+  dataList: [] = [];
+  page: number=10;
+  search: string;
+  order: string;
+  direction: string;
+  roleTemplate: any;
+  url:string="http:localhost:3000"
   userNick: any;
-  base64image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAG1BMVEVEeef///+4zPaKq/ChvPPn7' +
-    'vxymu3Q3flbieqI1HvuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAQUlEQVQ4jWNgGAWjgP6ASdncAEaiAhaGiACmFhCJLsMaIiDAEQEi0WXYEiMC' +
-    'OCJAJIY9KuYGTC0gknpuHwXDGwAA5fsIZw0iYWYAAAAASUVORK5CYII='
+  image:any
   constructor(public http: HttpClient,
     private router: Router,
     private toastrService: NbToastrService,private dialogService: NbDialogService,
@@ -45,19 +53,40 @@ export class EditclientComponent implements OnInit {
 
   ngOnInit() {
     debugger
-    this.client = this.route.snapshot.queryParams;
-    debugger
-      // if () {
-        if(this.client){
-          console.log('this.client');
-          // this.client=this.inputData
-        }else{
-          this.client=new ClientModel()
-        }
-      // }
-    // })
+    this.http.get("http://localhost:3000/Client/getByUserId/"+this.route.snapshot.params.id).subscribe((res:any)=>{
+      res[0].image= this.url+res[0].image;
+      this.client=res[0];
+        console.log("get by id",res)
+      })
+      debugger
+      
+          if(this.client){
+          }else{
+            this.client=new ClientModel()
+          }
+    this.columns = [
+      { prop: 'username', name: 'Name' },
+       { prop: 'company', name: 'User Name' },
+      { prop: 'username', name: 'Created' },
+      { prop: 'username', name: 'Created By' },
+      { prop: 'city', name: 'Api Access' },
+      { prop: 'state', name: 'Status' },
+    ];
+    this.loadData();
+  }
 
+  loadData() {
+    this.dataList;
+   }
 
+  changePage(pageInfo) {
+    // this.loadData(pageInfo.offset + 1);
+  }
+
+  onSort(sort) {
+    this.order = sort.sorts[0].prop;
+    this.direction = sort.sorts[0].dir;
+    // this.loadData();
   }
 
   onupdate(){

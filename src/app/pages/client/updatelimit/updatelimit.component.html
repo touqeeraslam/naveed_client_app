@@ -1,5 +1,27 @@
-<nb-card>
+<!-- <nb-card accent="info">
+  <nb-card-header>Sms Limit</nb-card-header>
   <nb-card-body class="example-items-col">
-<p>this works</p>
-</nb-card-body>
-</nb-card>
+    <input type="number" nbInput fullWidth fieldSize="large" placeholder="Input" [(ngModel)]="inputItemNgModel">
+  </nb-card-body>
+  <nb-card-footer>
+    <button type="button" class="btn btn-info">Close</button>
+    <button type="button" class="btn btn-success" style="margin-left: 2px;">Add</button>
+  </nb-card-footer>
+</nb-card> -->
+<div class="row">
+  <nb-card>
+    <nb-card-header>Sms Limit</nb-card-header>
+    <nb-card-body>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="inputfile" class="label">Sms Limit</label>
+            <input type="number" nbInput fullWidth >
+          </div>
+        </div>
+      </div>
+   
+      <button type="submit" nbButton>Submit</button>
+    </nb-card-body>
+  </nb-card>
+</div>
