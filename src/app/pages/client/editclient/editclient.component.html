@@ -1,15 +1,16 @@
 <div class="container">
   <nb-card>
     <nb-card-header>VIEW PROFILE</nb-card-header>
+    {{client.image}}
     <nb-card-body>
   <div class="row">
    <div class="col-md-2">
- <nb-user size="large"
-              name={{client.fname}}
-              picture="{{client.image}}"
-              >
+    <nb-user size="large"
+    name={{client.fname}}
+    [picture]="'http://localhost:3000'+client.image"
+    >
 
-     </nb-user>
+</nb-user>
   </div>
      <div class="col-md-10">
        <div class="row">

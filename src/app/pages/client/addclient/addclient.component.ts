@@ -10,15 +10,8 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./addclient.component.scss']
 })
 export class AddclientComponent implements OnInit {
-  // @HostBinding('class')
-  // classes = 'example-items-rows';
-  // @Input() inputData:any;
-  // data:any;
-  // message:string;
   client: ClientModel;
   index: number;
-  // selectedItemNgModel;
-  // selectedItem = '2';
 
   constructor(public http: HttpClient,
     private router: Router,
@@ -34,13 +27,7 @@ export class AddclientComponent implements OnInit {
         { position, status });
     }
     
-  ngOnInit() {
-    // if(this.inputData){
-    //   this.client=this.inputData
-    // }else{
-    //   this.client=new ClientModel()
-    // }
- 
+  ngOnInit() { 
   }
   allclient()
 {
@@ -57,23 +44,8 @@ export class AddclientComponent implements OnInit {
        console.log ('Oooops!',err);
       });
   }
-  uploadImage(mediaFiles:any) {
-    // if (mediaFiles && mediaFiles.length > 0) {
-      let apiCall: Array<any> = [];
-      debugger
-      // for (let i = 0; i < mediaFiles.length; i++) {
-        let formData: FormData = new FormData();
-        formData.append("file", mediaFiles.target.files[0]);
-
-        let uploadFilePath = environment.backendUrl + '/file';
-        this.http.post(uploadFilePath, formData).subscribe((res:any)=>{
-          console.log("success",res);
-          this.client.image = res.filePath;
-          return res;
-        },err=>{
-          console.log("err",err)
-          return err
-        })
-  }
+  uploadImage(mediaFile:any) {
+    this.client.image = mediaFile;
+    }
 
 }

@@ -100,34 +100,6 @@
         </div>
       </div>
 
-      <div class="form-group row">
-        <label class="label col-sm-3 col-form-label" for="input-hospital">Affiliated hospital</label>
-        <div class="col-sm-9">
-          <input nbInput
-                 [(ngModel)]="user.ClinicAffiliated"
-                 #hospital="ngModel"
-                 id="input-hospital"
-                 name="hospital"
-                 placeholder="Affiliated hospital"
-                 autofocus
-                 fullWidth
-                 [status]="hospital.dirty ? (hospital.invalid  ? 'danger' : 'success') : ''"
-                 [required]="getConfigValue('forms.validation.hospital.required')"
-                 [minlength]="getConfigValue('forms.validation.hospital.minLength')"
-                 [maxlength]="getConfigValue('forms.validation.hospital.maxLength')"
-                 [attr.aria-invalid]="hospital.invalid && hospital.touched ? true : null">
-
-          <ng-container *ngIf="hospital.invalid && hospital.touched">
-            <span class="caption status-danger col" *ngIf="hospital.errors?.minlength || hospital.errors?.maxlength">
-              Hospital name should contains
-              from {{getConfigValue('forms.validation.hospital.minLength')}}
-              to {{getConfigValue('forms.validation.hospital.maxLength')}}
-              characters
-            </span>
-          </ng-container>
-        </div>
-      </div>
-
       <div class="form-group row" *ngIf="useEmail">
         <label class="label col-sm-3 col-form-label" for="input-email">Email address</label>
         <div class="col-sm-9">

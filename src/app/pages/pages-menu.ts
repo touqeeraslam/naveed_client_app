@@ -25,4 +25,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ],
   },
+  {
+    title: 'Contacts',
+    icon: { icon: 'user-tie', pack: 'fa-solid' },
+    link: '/pages/contact/contact-list',
+    children: [
+      {
+        title: 'Phone Book',
+        icon: { icon: 'user-tie', pack: 'fa-solid' },
+        link: '/pages/contact/contact-list',
+      },
+    ],
+  },
 ];

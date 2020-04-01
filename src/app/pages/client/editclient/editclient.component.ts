@@ -54,7 +54,7 @@ export class EditclientComponent implements OnInit {
   ngOnInit() {
     debugger
     this.http.get("http://localhost:3000/Client/getByUserId/"+this.route.snapshot.params.id).subscribe((res:any)=>{
-      res[0].image= this.url+res[0].image;
+      // res[0].image= this.url+res[0].image;
       this.client=res[0];
         console.log("get by id",res)
       })
@@ -90,11 +90,26 @@ export class EditclientComponent implements OnInit {
   }
 
   onupdate(){
-    this.router.navigate(["pages/client/allclient/"]);
+    debugger
+    this.http.put("http://localhost:3000/Client/update/"+this.route.snapshot.params.id, this.client).subscribe((res:any)=>{
+      debugger
+      console.log(res);
+      this.router.navigate(["pages/client/allclient/"]);
+      this.showToast('top-right', 'success','Updated successfully');
+    }, (err) => {
+      this.showToast('top-right', 'danger', err.message);
+     console.log ('Oooops!',err);
+      
+      })
+   }
+  changeProfile=()=>{
+    this.dialogService.open(ProfileComponent)
+
+    .onClose.subscribe(fileurl =>{
+      console.log('model close',fileurl)
+      this.client.image = fileurl});
   }
-  changeProfile(){
-    this.dialogService.open(ProfileComponent);
-  }
+ 
   updatelimit(){
     this.dialogService.open(UpdatelimitComponent);
   }

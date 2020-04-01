@@ -15,9 +15,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
-  declarations: [AllclientComponent,AddclientComponent, EditclientComponent, ProfileComponent, UpdatelimitComponent, SendsmsComponent],
+  declarations: [AllclientComponent,AddclientComponent, EditclientComponent, ProfileComponent, UpdatelimitComponent, SendsmsComponent,FileUploadComponent],
   imports: [
     CommonModule,
     FormsModule,

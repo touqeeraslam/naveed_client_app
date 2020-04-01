@@ -5,6 +5,7 @@
       <nb-card-header>Add New Client</nb-card-header>
       <nb-card-body>
         <form action="/upload" #myForm="ngForm" (ngSubmit)="allclient(); myForm.reset()" enctype="multipart/form-data">
+        <div class="full-name-inputs">
         <div class="form-control-group" >
           <label class="label">First Name</label>
           <input nbInput
@@ -23,7 +24,7 @@
             </p>
           </ng-container>
         </div>
-        <div class="full-name-inputs">
+      
           <div class="form-control-group">
             <label class="label">Last Name</label>
             <input nbInput
@@ -42,6 +43,7 @@
               </p>
             </ng-container>
           </div>
+        </div>
           <div class="form-control-group">
             <label class="label">Company</label>
             <input nbInput
@@ -60,7 +62,7 @@
               </p>
             </ng-container>
           </div>
-        </div>
+        
         <!-- <input type="password" nbInput fullWidth placeholder="Password"> -->
         <div class="form-control-group">
           <label class="label">WEBSITE</label>
@@ -329,7 +331,7 @@
             </p>
           </ng-container>
         </div>
-        <div class="form-control-group">
+        <!-- <div class="form-control-group">
           <label class="label">Profile Image</label>
           <input  nbInput type="file" 
                  fullWidth
@@ -337,7 +339,8 @@
                  (change)="uploadImage($event)"
                  >
          
-        </div>
+        </div> -->
+        <file-upload (onFileUpload)="uploadImage($event)"></file-upload>
         <br>
         <button type="submit"
                 nbButton
@@ -348,7 +351,6 @@
                 >
           + Add
         </button>
-        <!-- <button nbButton (click)="showToast('top-right', 'success')">Top Right</button> -->
       </form>
       </nb-card-body>
     </nb-card>

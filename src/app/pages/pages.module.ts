@@ -5,6 +5,7 @@ import { ThemeModule } from '../@theme/theme.module';
 import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { ClientModule } from './client/client.module';
+import { ContactModule } from './contact/contact.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ClientModule } from './client/client.module';
     ThemeModule,
     NbMenuModule,
     ClientModule,
+    ContactModule,
   ],
   declarations: [
     PagesComponent,
