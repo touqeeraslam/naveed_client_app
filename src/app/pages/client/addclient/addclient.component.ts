@@ -16,7 +16,7 @@ export class AddclientComponent implements OnInit {
   constructor(public http: HttpClient,
     private router: Router,
     private toastrService: NbToastrService,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute) {
       this.client=new ClientModel()
     }
    showToast(position, status,message) {
@@ -26,14 +26,14 @@ export class AddclientComponent implements OnInit {
         message,
         { position, status });
     }
-    
-  ngOnInit() { 
+
+  ngOnInit() {
   }
   allclient()
 {
   debugger
-  this.http.post('http://localhost:3000/Client/create', this.client)
-  
+  this.http.post(environment.backendUrl+'/Client/create', this.client)
+
       .subscribe(response => {
         debugger
         this.router.navigate(["pages/client/allclient/"]);

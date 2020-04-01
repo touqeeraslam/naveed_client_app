@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientModel } from '../addclient/client.model';
 import { NbToastrService } from '@nebular/theme';
+import { environment } from '../../../../environments/environment';
 
 
 @Component({
@@ -75,14 +76,14 @@ export class AllclientComponent implements OnInit {
   onDelete(row) {
     console.log("row",row);
     debugger
-    this.http.delete("http://localhost:3000/Client/delete/"+  row._id).subscribe((res:any)=>{
+    this.http.delete(environment.backendUrl+"/Client/delete/"+  row._id).subscribe((res:any)=>{
       debugger
       this.router.navigate(["pages/client/allclient/"]);
       this.showToast('top-right', 'success','Deleted successfully');
     }, (err) => {
       this.showToast('top-right', 'danger', err.message);
      console.log ('Oooops!',err);
-      
+
       })
   }
 }

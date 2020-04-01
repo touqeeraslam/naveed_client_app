@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ContactModel } from '../contact.model';
 import { ContactService } from '../../service/contact.service';
 import { EditContactComponent } from '../edit-contact/edit-contact.component';
+import { environment } from '../../../../environments/environment';
 
 
 
@@ -27,14 +28,14 @@ export class ContactListComponent implements OnInit {
   constructor(public http: HttpClient,
     private service: ContactService , private router: Router,
     private toastrService: NbToastrService,private dialogService: NbDialogService,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute) {
       this.contact= new ContactModel()
       const data = this.service.getContact().subscribe(res=>{
         this.contactList = res;
         console.log(this.contactList);
         console.log(res);
       });
-    
+
   }
   showToast(position, status,message) {
     this.index += 1;
@@ -49,12 +50,12 @@ export class ContactListComponent implements OnInit {
       //  { prop:'last_name', name: 'LIST NAME'}
     ];
     this.loadData();
-    
+
   }
 
   loadData() {
     this.contactList;
-    
+
    }
 
   changePage(pageInfo) {
@@ -66,7 +67,7 @@ export class ContactListComponent implements OnInit {
   }
   addContactGroup(){
     debugger
-    this.http.post('http://localhost:3000/Contact/add', this.contact)
+    this.http.post(environment.backendUrl+'/Contact/add', this.contact)
         .subscribe(response => {
           this.showToast('top-right', 'success','added successfully');
           console.log(response);
@@ -77,7 +78,7 @@ export class ContactListComponent implements OnInit {
   }
   onview(row){
     console.log("row",row);
-    this.router.navigate(['pages/contact/add-contact/'+ row._id]); 
+    this.router.navigate(['pages/contact/add-contact/'+ row._id]);
   }
   onAdd(){
     this.router.navigate(['pages/contact/add-contact/']);

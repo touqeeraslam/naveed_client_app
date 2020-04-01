@@ -4,6 +4,7 @@ import { NbToastrService } from '@nebular/theme';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactModel } from '../contact.model';
 import { ContactService } from '../../service/contact.service';
+import { environment } from '../../../../environments/environment.prod';
 
 @Component({
   selector: 'add-contact',
@@ -17,7 +18,7 @@ export class AddContactComponent implements OnInit {
   constructor(public http: HttpClient,
     private router: Router, private service: ContactService,
     private toastrService: NbToastrService,
-    private route: ActivatedRoute){ 
+    private route: ActivatedRoute){
       this.contact=new ContactModel()
       }
   showToast(position, status,message) {
@@ -37,8 +38,8 @@ export class AddContactComponent implements OnInit {
   }
   addcontact(){
     debugger
-    this.http.post('http://localhost:3000/Contact/Add', this.contact)
-    
+    this.http.post(environment.backendUrl+'/Contact/Add', this.contact)
+
         .subscribe(response => {
           debugger
           this.router.navigate(["pages/contact/contact-list/"]);

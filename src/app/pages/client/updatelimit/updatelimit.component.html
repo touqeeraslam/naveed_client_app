@@ -8,7 +8,7 @@
     <button type="button" class="btn btn-success" style="margin-left: 2px;">Add</button>
   </nb-card-footer>
 </nb-card> -->
-<div class="row">
+<!-- <div class="row">
   <nb-card>
     <nb-card-header>Sms Limit</nb-card-header>
     <nb-card-body>
@@ -20,8 +20,24 @@
           </div>
         </div>
       </div>
-   
+
       <button type="submit" nbButton>Submit</button>
     </nb-card-body>
   </nb-card>
-</div>
+</div> -->
+
+<!-- <ng-template > -->
+  <nb-card>
+    <nb-card-header>Update SMS Limit</nb-card-header>
+    <nb-card-body>
+  <!-- <updatelimit (onChangeLimit)="onChangeLimit($event)"></updatelimit> -->
+  <div class="form-group">
+    <label for="inputfile" class="label">Sms Limit</label>
+    <input type="number" [(ngModel)]="limit" nbInput fullWidth >
+  </div>
+</nb-card-body>
+    <nb-card-footer>
+      <button nbButton (click)="close(limit)">Update Sms Limit</button>
+    </nb-card-footer>
+  </nb-card>
+<!-- </ng-template> -->

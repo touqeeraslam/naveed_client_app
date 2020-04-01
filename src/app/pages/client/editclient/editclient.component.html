@@ -1,13 +1,27 @@
-<div class="container">
+<ngx-loading [show]="isLoading" [config]="{animationType: ngxLoadingAnimationTypes.wanderingCubes,
+  primaryColour: PrimaryGreen, secondaryColour: SecondaryGrey,fullScreenBackdrop:true, backdropBorderRadius: '3px'}"></ngx-loading>
+
+  <ng-template #dialog let-data let-ref="dialogRef">
+    <nb-card>
+      <nb-card-header>Update Profile Image</nb-card-header>
+      <nb-card-body>
+        <file-upload (onFileUpload)="uploadImage($event)" (onLoading)="toggleLoader($event)"></file-upload>
+      </nb-card-body>
+      <nb-card-footer>
+        <button nbButton (click)="ref.close()">Update Profile Image</button>
+      </nb-card-footer>
+    </nb-card>
+  </ng-template>
+
+  <div class="container">
   <nb-card>
     <nb-card-header>VIEW PROFILE</nb-card-header>
-    {{client.image}}
     <nb-card-body>
   <div class="row">
    <div class="col-md-2">
     <nb-user size="large"
     name={{client.fname}}
-    [picture]="'http://localhost:3000'+client.image"
+    picture="{{url+client.image}}"
     >
 
 </nb-user>
@@ -35,11 +49,12 @@
        </div>
 
        <button type="button" class="btn btn-info" (click)="sendsms()">Send Sms</button>
-        <button type="button" class="btn btn-success" style="margin-left: 2px;"(click)="updatelimit()">Update Limit</button>
-        <button type="button" class="btn btn-success"style="margin-left: 2px;" (click)="changeProfile()"> Change Image</button>
+        <button type="button" class="btn btn-success" style="margin-left: 2px;"(click)="updateLimit()">Update Limit</button>
+        <button type="button" class="btn btn-success"style="margin-left: 2px;" (click)="open(dialog)"> Change Image</button>
      </div>
      </div>
-     
+<!-- use this for model response as uploaded fiel url -->
+
   </nb-card-body>
   </nb-card>
 </div>
@@ -48,7 +63,7 @@
         <nb-tabset>
           <nb-tab tabTitle="Edit Profile">
             <form class="form-inline">
-             
+
               <div class="form-control-group" >
                 <label class="label">First Name</label>
                 <input nbInput
@@ -85,7 +100,7 @@
                     </p>
                   </ng-container>
                 </div>
-              
+
                 <div class="form-control-group">
                   <label class="label">Company</label>
                   <input nbInput
@@ -185,8 +200,8 @@
                   </p>
                 </ng-container>
               </div>
-            
-           
+
+
               <div class="form-control-group">
                 <label class="label">Address</label>
                 <input nbInput
@@ -223,8 +238,8 @@
                   </p>
                 </ng-container>
               </div>
-          
-          
+
+
               <div class="form-control-group">
                 <label class="label">STATE</label>
                 <input nbInput
@@ -243,9 +258,9 @@
                   </p>
                 </ng-container>
               </div>
-          
-            
-            
+
+
+
               <div class="form-control-group">
                 <label class="label">City</label>
                 <input nbInput
@@ -264,8 +279,8 @@
                   </p>
                 </ng-container>
               </div>
-          
-              
+
+
               <div class="form-control-group">
                 <label class="label">Passcode</label>
                 <input nbInput
@@ -303,7 +318,7 @@
                   </p>
                 </ng-container>
               </div>
-              
+
               <!-- <div class="form-control-group">
                 <label class="label">Country</label>
                 <br>
@@ -315,7 +330,7 @@
                   <nb-option value="4">Austrila</nb-option>
                 </nb-select>
               </div>  -->
-             
+
               <!-- <div class="form-control-group">
                 <label class="label">API ACCESS</label>
                 <br>
@@ -336,8 +351,8 @@
                 <nb-option value="4">Option 4</nb-option>
                 </nb-select>
               </div>
-           
-              
+
+
               <div class="form-control-group">
                 <label class="label">CLIENT GROUP</label>
                 <br>
@@ -367,7 +382,7 @@
               (click)="onupdate()"
               >
         + Update
-        </button> 
+        </button>
           </nb-tab>
           <nb-tab tabTitle="Support Tickets">
             <ngx-datatable
@@ -386,9 +401,9 @@
             [rows]="dataList"
             [columns]="columns"
           >
-          
+
           </ngx-datatable>
-          
+
           </nb-tab>
           <nb-tab tabTitle="Invoices">
             <ngx-datatable
@@ -432,4 +447,3 @@
         </nb-tabset>
       </nb-card-body>
     </nb-card>
- 
