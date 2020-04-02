@@ -12,7 +12,7 @@ export class ViewContactComponent implements OnInit {
   columns: any[] = [];
   dataList: [] = [];
   page: number=10;
-contact:ContactModel;
+  contact:ContactModel;
   search: string;
   index: number;
   order: string;

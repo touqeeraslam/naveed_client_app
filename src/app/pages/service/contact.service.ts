@@ -12,4 +12,8 @@ export class ContactService {
   getContact(): Observable<any> {
     return this.http.get('http://localhost:3000/Contact/get-all');
   }
+  getcountry() {
+    return this.http.get('https://restcountries.eu/rest/v2/all').pipe (
+    );
+  }
 }

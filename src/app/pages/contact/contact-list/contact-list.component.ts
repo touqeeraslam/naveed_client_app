@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NbToastrService } from '@nebular/theme';
+import { NbToastrService, NbDialogService } from '@nebular/theme';
 import { HttpClient } from '@angular/common/http';
 import { ContactModel } from '../contact.model';
 import { ContactService } from '../../service/contact.service';
+import { EditContactComponent } from '../edit-contact/edit-contact.component';
 
 
 
@@ -25,7 +26,7 @@ export class ContactListComponent implements OnInit {
 
   constructor(public http: HttpClient,
     private service: ContactService , private router: Router,
-    private toastrService: NbToastrService,
+    private toastrService: NbToastrService,private dialogService: NbDialogService,
     private route: ActivatedRoute) { 
       this.contact= new ContactModel()
       const data = this.service.getContact().subscribe(res=>{
@@ -45,8 +46,7 @@ export class ContactListComponent implements OnInit {
   ngOnInit() {
     this.columns=[
        { prop:'last_name', name: 'LIST NAME' },
-       { prop:'last_name', name: 'LIST NAME',width:-100},
-      
+      //  { prop:'last_name', name: 'LIST NAME'}
     ];
     this.loadData();
     
@@ -76,13 +76,16 @@ export class ContactListComponent implements OnInit {
         });
   }
   onview(row){
-    this.router.navigate(['pages/contact/view-contact/']); 
+    console.log("row",row);
+    this.router.navigate(['pages/contact/add-contact/'+ row._id]); 
   }
   onAdd(){
     this.router.navigate(['pages/contact/add-contact/']);
   }
   onEdit(row){
-    this.router.navigate(['pages/contact/edit-contact/' + row._id]); 
+    console.log("row",row);
+    // this.dialogService.open([`pages/contact/edit-contact:id/${row._id}`]);
+    this.router.navigate(['pages/contact/contact-list:id/'+row._id]);
   }
   onDelete(row){
     console.log('hii');

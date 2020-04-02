@@ -64,13 +64,13 @@ const routes: Routes = [
         component: AddContactComponent
       },
       {
-        path: "contact/edit-contact:id",
+        path: "contact/edit-contact/:id",
         component: EditContactComponent
       },
-      {
-        path: "contact/view-contact",
-        component: ViewContactComponent
-      },
+      // {
+      //   path: "contact/view-contact/:id",
+      //   component: ViewContactComponent
+      // },
     ]
   }
 ];
